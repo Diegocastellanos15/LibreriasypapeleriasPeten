@@ -452,11 +452,48 @@ font-size:26px;
 margin-bottom:25px;
 }
 
-footer{
+.footer{
 background:#001f3f;
 color:white;
+padding:55px 10% 25px;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:35px;
+}
+
+.footer h3{
+font-size:26px;
+margin-bottom:12px;
+color:white;
+}
+
+.footer h4{
+font-size:18px;
+margin-bottom:14px;
+color:#ffc107;
+}
+
+.footer p,
+.footer a{
+display:block;
+color:#dbeafe;
+text-decoration:none;
+margin-bottom:8px;
+font-size:15px;
+}
+
+.footer a:hover{
+color:#ffc107;
+}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.15);
+margin-top:30px;
+padding-top:18px;
 text-align:center;
-padding:25px;
 }
 
 .whatsapp{
@@ -475,6 +512,19 @@ z-index:999;
 
 @media(max-width:768px){
 
+.footer{
+padding:40px 6% 22px;
+}
+
+.footer-container{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.footer-brand,
+.footer-column{
+text-align:center;
+}
 header h1{
 font-size:34px;
 }
@@ -741,8 +791,52 @@ papelería, oficina y soluciones institucionales.
 
 </section>
 
-<footer>
-© 2026 Cultura Inteligente
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-brand">
+<h3>Cultura Inteligente</h3>
+<p>
+Red de librerías y papelerías en Petén, especializada en útiles escolares,
+papelería, oficina y soluciones institucionales.
+</p>
+</div>
+
+<div class="footer-column">
+<h4>Enlaces</h4>
+<a href="#inicio">Inicio</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#productos">Productos</a>
+<a href="#mayoreo">Mayoreo</a>
+<a href="#contacto">Contacto</a>
+</div>
+
+<div class="footer-column">
+<h4>Cobertura</h4>
+<p>Flores</p>
+<p>Santa Elena</p>
+<p>San Benito</p>
+<p>Sayaxché</p>
+<p>Poptún</p>
+<p>Melchor de Mencos</p>
+<p>La Libertad</p>
+</div>
+
+<div class="footer-column">
+<h4>Contacto</h4>
+<p>WhatsApp: +502 XXXXXXXX</p>
+<p>Petén, Guatemala</p>
+<p>Lunes a domingo</p>
+<p>8:00 a.m. - 6:00 p.m.</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Cultura Inteligente. Todos los derechos reservados.</p>
+</div>
+
 </footer>
 
 <a href="https://wa.me/50200000000" class="whatsapp">
