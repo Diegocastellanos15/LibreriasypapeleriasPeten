@@ -107,7 +107,23 @@ font-weight:bold;
 .nav-mobile-header{
 display:none;
 }
+.fade-in{
+opacity:0;
+transform:translateY(25px);
+transition:opacity .8s ease, transform .8s ease;
+}
 
+.fade-in.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.card,
+.stat-card,
+.trust-card,
+.coverage-box{
+will-change:transform, opacity;
+}
 @media(max-width:768px){
 
 .nav-mobile-header{
@@ -1039,7 +1055,39 @@ contenido += `
 
 resultado.innerHTML = contenido;
 
+resultado.classList.remove("visible");
+
+setTimeout(() => {
+resultado.classList.add("visible");
+}, 50);
+
+ const elementosAnimados =
+document.querySelectorAll(
+"section, .card, .stat-card, .trust-card, .coverage-box"
+);
+
+elementosAnimados.forEach(elemento => {
+elemento.classList.add("fade-in");
+});
+
+const observador =
+new IntersectionObserver((entradas) => {
+
+entradas.forEach(entrada => {
+
+if(entrada.isIntersecting){
+entrada.target.classList.add("visible");
 }
+
+});
+
+},{
+threshold:.15
+});
+
+elementosAnimados.forEach(elemento => {
+observador.observe(elemento);
+});
 function toggleMenu(){
 
 document
