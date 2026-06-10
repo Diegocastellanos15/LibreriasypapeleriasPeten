@@ -303,6 +303,85 @@ background:#ffc107;
 color:#003366;
 transform:translateY(-3px);
 }
+  .map-section{
+background:#003366;
+padding:75px 10%;
+color:white;
+}
+
+.map-section .titulo h2{
+color:white;
+}
+
+.map-section .titulo p{
+color:#e5e7eb;
+}
+
+.coverage-box{
+background:white;
+border-radius:24px;
+padding:35px;
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+color:#1f2937;
+}
+
+.coverage-buttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-bottom:30px;
+}
+
+.coverage-btn{
+border:none;
+background:#f4f6f9;
+color:#003366;
+padding:13px 20px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.coverage-btn:hover,
+.coverage-btn.active{
+background:#ffc107;
+color:#003366;
+transform:translateY(-3px);
+}
+
+.coverage-result{
+background:#f8fafc;
+border-radius:18px;
+padding:30px;
+border-left:6px solid #ffc107;
+}
+
+.coverage-result h3{
+color:#003366;
+margin-bottom:15px;
+font-size:26px;
+}
+
+.coverage-list{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.coverage-item{
+background:white;
+padding:18px;
+border-radius:14px;
+box-shadow:0 8px 20px rgba(0,0,0,.06);
+border-top:4px solid #003366;
+}
+
+.coverage-item strong{
+color:#003366;
+}
 .about{
 background:white;
 }
@@ -583,7 +662,7 @@ para estudiantes, familias, empresas e instituciones.
 </div>
 
 </section>
-  <section class="location-section">
+<section class="location-section">
 
 <div class="titulo">
 
@@ -604,6 +683,45 @@ Nuestra red de sucursales nos permite atender a clientes en los principales muni
 <div class="location-tag">Poptún</div>
 <div class="location-tag">Melchor de Mencos</div>
 <div class="location-tag">La Libertad</div>
+
+</div>
+
+</section>
+<section class="map-section">
+
+<div class="titulo">
+
+<h2>🗺️ Nuestra presencia en Petén</h2>
+
+<p>
+Selecciona un municipio para conocer las sucursales disponibles en esa zona.
+</p>
+
+</div>
+
+<div class="coverage-box">
+
+<div class="coverage-buttons">
+
+<button class="coverage-btn" onclick="mostrarCobertura('Flores', this)">Flores</button>
+<button class="coverage-btn" onclick="mostrarCobertura('Santa Elena', this)">Santa Elena</button>
+<button class="coverage-btn" onclick="mostrarCobertura('San Benito', this)">San Benito</button>
+<button class="coverage-btn" onclick="mostrarCobertura('Sayaxché', this)">Sayaxché</button>
+<button class="coverage-btn" onclick="mostrarCobertura('Poptún', this)">Poptún</button>
+<button class="coverage-btn" onclick="mostrarCobertura('Melchor de Mencos', this)">Melchor de Mencos</button>
+<button class="coverage-btn" onclick="mostrarCobertura('La Libertad', this)">La Libertad</button>
+
+</div>
+
+<div id="coverageResult" class="coverage-result">
+
+<h3>Selecciona un municipio</h3>
+
+<p>
+Aquí aparecerán las sucursales disponibles según la ubicación seleccionada.
+</p>
+
+</div>
 
 </div>
 
@@ -739,6 +857,7 @@ ubicacion:"San Benito, Petén",
 horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
 telefono:"+502 XXXXXXXX"
 },
+{
 nombre:"Smart 1",
 municipio:"Santa Elena",
 ubicacion:"Santa Elena, Petén",
@@ -850,6 +969,44 @@ document.getElementById("locationModal").style.display="flex";
 document.getElementById("sucursalesSeleccionadas").innerHTML = "";
 document.getElementById("otrasSucursales").innerHTML =
 sucursales.map(s => crearCardSucursal(s,false)).join("");
+
+}
+function mostrarCobertura(municipio, boton){
+
+const resultado =
+document.getElementById("coverageResult");
+
+const botones =
+document.querySelectorAll(".coverage-btn");
+
+botones.forEach(btn => btn.classList.remove("active"));
+
+boton.classList.add("active");
+
+const sucursalesMunicipio =
+sucursales.filter(s => s.municipio === municipio);
+
+let contenido = `
+<h3>📍 ${municipio}</h3>
+<p>Estas son las sucursales disponibles en este municipio:</p>
+<div class="coverage-list">
+`;
+
+sucursalesMunicipio.forEach(sucursal => {
+contenido += `
+<div class="coverage-item">
+<strong>${sucursal.nombre}</strong>
+<p>${sucursal.ubicacion}</p>
+<p>${sucursal.horario}</p>
+</div>
+`;
+});
+
+contenido += `
+</div>
+`;
+
+resultado.innerHTML = contenido;
 
 }
 function toggleMenu(){
