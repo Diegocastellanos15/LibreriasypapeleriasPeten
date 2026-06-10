@@ -93,22 +93,65 @@ top:0;
 z-index:100;
 }
 
-nav a{
+nav{
+background:#003366;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.nav-links{
+display:flex;
+justify-content:center;
+gap:35px;
+padding:15px;
+}
+
+.nav-links a{
 color:white;
 text-decoration:none;
-margin:0 15px;
 font-weight:bold;
 }
 
-header{
-background:
-linear-gradient(rgba(0,35,80,.85),rgba(0,35,80,.85)),
-url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
-background-size:cover;
-background-position:center;
+.nav-mobile-header{
+display:none;
+}
+
+@media(max-width:768px){
+
+.nav-mobile-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
 color:white;
-padding:90px 20px;
-text-align:center;
+font-weight:bold;
+}
+
+.nav-mobile-header button{
+background:none;
+border:none;
+color:white;
+font-size:30px;
+cursor:pointer;
+}
+
+.nav-links{
+display:none;
+flex-direction:column;
+gap:0;
+padding:0;
+}
+
+.nav-links a{
+padding:15px;
+border-top:1px solid rgba(255,255,255,.15);
+}
+
+.nav-links.active{
+display:flex;
+}
+
 }
 
 header h1{
@@ -304,14 +347,29 @@ Cultura Inteligente
 </div>
 
 <nav>
+
+<div class="nav-mobile-header">
+
+<span>Cultura Inteligente</span>
+
+<button onclick="toggleMenu()">
+☰
+</button>
+
+</div>
+
+<div class="nav-links" id="navLinks">
+
 <a href="#inicio">Inicio</a>
 <a href="#nosotros">Nosotros</a>
 <a href="#sucursales">Sucursales</a>
 <a href="#productos">Productos</a>
 <a href="#mayoreo">Mayoreo</a>
 <a href="#contacto">Contacto</a>
-</nav>
 
+</div>
+
+</nav>
 <header id="inicio">
 
 <h1>Cultura Inteligente</h1>
@@ -562,7 +620,13 @@ document.getElementById("otrasSucursales").innerHTML =
 sucursales.map(s => crearCardSucursal(s,false)).join("");
 
 }
+function toggleMenu(){
 
+document
+.getElementById("navLinks")
+.classList.toggle("active");
+
+}
 </script>
 
 </body>
