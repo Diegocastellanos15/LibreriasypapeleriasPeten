@@ -291,7 +291,7 @@ color:#4b5563;
 section{
 padding:60px 10%;
 }
-  .map-section{
+.map-section{
 background:#003366;
 padding:75px 10%;
 color:white;
@@ -314,22 +314,18 @@ color:#1f2937;
 }
 
 .coverage-buttons{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-margin-bottom:30px;
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:10px;
+overflow:visible;
+padding-bottom:0;
 }
 
 .coverage-btn{
-border:none;
-background:#f4f6f9;
-color:#003366;
-padding:13px 20px;
-border-radius:30px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
+width:100%;
+padding:10px 8px;
+font-size:13px;
+text-align:center;
 }
 
 .coverage-btn:hover,
@@ -527,6 +523,7 @@ z-index:999;
 }
 
 @media(max-width:768px){
+
 header{
 padding:65px 6%;
 text-align:center;
@@ -555,20 +552,48 @@ padding:11px 16px;
 font-size:14px;
 }
 
+section{
+padding:38px 5%;
+}
+
+.titulo{
+margin-bottom:24px;
+}
+
+.titulo h2{
+font-size:25px;
+line-height:1.2;
+}
+
 .stats-section{
-padding:25px 6%;
+padding:25px 5%;
+}
+
+.stats-grid{
+grid-template-columns:repeat(2, 1fr);
+gap:12px;
 }
 
 .stat-card{
-padding:18px;
+padding:16px 10px;
+border-radius:14px;
 }
 
 .stat-card h2{
-font-size:26px;
+font-size:24px;
+}
+
+.stat-card p{
+font-size:14px;
 }
 
 .trust-section{
-padding:45px 6%;
+padding:45px 5%;
+}
+
+.trust-grid,
+.grid{
+gap:14px;
 }
 
 .trust-card{
@@ -576,29 +601,32 @@ padding:22px;
 }
 
 .map-section{
-padding:50px 4%;
+padding:45px 4%;
 }
 
 .coverage-box{
-padding:22px;
-border-radius:18px;
+padding:18px;
+border-radius:20px;
 }
 
 .coverage-buttons{
-flex-wrap:nowrap;
-overflow-x:auto;
-justify-content:flex-start;
-padding-bottom:12px;
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:10px;
+overflow:visible;
+padding-bottom:0;
 }
 
 .coverage-btn{
-min-width:max-content;
-padding:11px 16px;
-font-size:14px;
+width:100%;
+padding:10px 8px;
+font-size:13px;
+text-align:center;
 }
 
 .coverage-result{
-padding:22px;
+padding:20px;
+border-left:4px solid #ffc107;
 }
 
 .coverage-result h3{
@@ -607,18 +635,16 @@ font-size:23px;
 
 .coverage-list{
 grid-template-columns:1fr;
+gap:16px;
 }
 
 .card{
-padding:22px;
+padding:20px;
+border-radius:16px;
 }
 
 .card h3{
 font-size:20px;
-}
-
-.titulo h2{
-font-size:27px;
 }
 
 .whatsapp{
@@ -643,6 +669,7 @@ width:85%;
 .modal-content button{
 padding:13px 32px;
 }
+
 .footer{
 padding:40px 6% 22px;
 }
@@ -655,10 +682,6 @@ gap:25px;
 .footer-brand,
 .footer-column{
 text-align:center;
-}
-
-section{
-padding:45px 6%;
 }
 
 }
