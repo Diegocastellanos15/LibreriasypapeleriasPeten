@@ -1,18 +1,499 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cultura Inteligente | Librerías y Papelerías en Petén</title>
 
-  <style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cultura Inteligente | Librerías y Papelerías en Petén</title>
+
+<style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
+
+body{
+background:#f4f6f9;
+color:#1f2937;
+line-height:1.6;
+}
+
+/* MODAL */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.modal-content{
+background:white;
+width:90%;
+max-width:550px;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+.modal-header{
+background:#003366;
+color:white;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+}
+
+.modal-content h2{
+text-align:center;
+margin:25px;
+color:#003366;
+}
+
+.modal-content label{
+display:block;
+width:80%;
+margin:10px auto 5px;
+font-weight:bold;
+}
+
+.modal-content select{
+width:80%;
+padding:14px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+display:block;
+margin:auto;
+}
+
+.modal-content button{
+background:#e30613;
+color:white;
+border:none;
+padding:15px 40px;
+border-radius:10px;
+margin:25px auto 35px;
+display:block;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* MENU */
+
+nav{
+background:#003366;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 15px;
+font-weight:bold;
+}
+
+/* HERO */
+
+header{
+background:
+linear-gradient(rgba(0,35,80,.85),rgba(0,35,80,.85)),
+url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+background-size:cover;
+background-position:center;
+color:white;
+padding:90px 20px;
+text-align:center;
+}
+
+header h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+header p{
+font-size:20px;
+max-width:800px;
+margin:auto;
+}
+
+.hero-buttons{
+margin-top:30px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 24px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin:8px;
+}
+
+.btn-primary{
+background:#e30613;
+color:white;
+}
+
+.btn-secondary{
+background:white;
+color:#003366;
+}
+
+/* SECCIONES */
+
+section{
+padding:60px 10%;
+}
+
+.about{
+background:white;
+}
+
+.contacto{
+background:white;
+text-align:center;
+}
+
+.mayoreo{
+background:#003366;
+color:white;
+text-align:center;
+}
+
+.titulo{
+text-align:center;
+margin-bottom:35px;
+}
+
+.titulo h2{
+color:#003366;
+font-size:32px;
+margin-bottom:10px;
+}
+
+.mayoreo .titulo h2{
+color:white;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+color:#0057b8;
+margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+background:#001f3f;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25d366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 6px 18px rgba(0,0,0,.25);
+z-index:999;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+header h1{
+font-size:34px;
+}
+
+nav a{
+display:block;
+margin:10px 0;
+}
+
+section{
+padding:45px 6%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- MODAL -->
+
+<div id="locationModal" class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+Cultura Inteligente
+</div>
+
+<h2>Selecciona tu municipio</h2>
+
+<label>Departamento</label>
+
+<select disabled>
+<option>Petén</option>
+</select>
+
+<label>Municipio</label>
+
+<select id="municipio">
+
+<option value="">Selecciona un municipio</option>
+
+<option>San Benito</option>
+<option>Flores</option>
+<option>Santa Elena</option>
+<option>Sayaxché</option>
+<option>Melchor de Mencos</option>
+<option>Poptún</option>
+<option>La Libertad</option>
+
+</select>
+
+<button onclick="cerrarModal()">
+Aceptar
+</button>
+
+</div>
+
+</div>
+
+<!-- MENU -->
+
+<nav>
+
+<a href="#inicio">Inicio</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#sucursales">Sucursales</a>
+<a href="#productos">Productos</a>
+<a href="#mayoreo">Mayoreo</a>
+<a href="#contacto">Contacto</a>
+
+</nav>
+
+<!-- HERO -->
+
+<header id="inicio">
+
+<h1>Cultura Inteligente</h1>
+
+<p>
+Librerías y papelerías en Petén,
+ofreciendo útiles escolares,
+artículos de oficina y soluciones para
+estudiantes, empresas e instituciones.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#productos" class="btn btn-primary">
+Ver productos
+</a>
+
+<a href="#contacto" class="btn btn-secondary">
+Solicitar cotización
+</a>
+
+</div>
+
+</header>
+
+<!-- NOSOTROS -->
+
+<section id="nosotros" class="about">
+
+<div class="titulo">
+<h2>¿Quiénes somos?</h2>
+
+<p>
+Empresa petenera especializada en útiles escolares,
+papelería, oficina y soluciones institucionales.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Misión</h3>
+<p>Brindar productos de calidad y excelente servicio.</p>
+</div>
+
+<div class="card">
+<h3>Visión</h3>
+<p>Ser la red de librerías líder en Petén.</p>
+</div>
+
+<div class="card">
+<h3>Valores</h3>
+<p>Responsabilidad, servicio, confianza e innovación.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SUCURSALES -->
+
+<section id="sucursales">
+
+<div class="titulo">
+
+<h2>Nuestras sucursales</h2>
+
+<p>
+Cobertura estratégica en Petén.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card"><h3>Cultura 2</h3></div>
+<div class="card"><h3>Cultura 3</h3></div>
+<div class="card"><h3>Cultura 4</h3></div>
+<div class="card"><h3>Cultura 5</h3></div>
+<div class="card"><h3>Smart 1</h3></div>
+<div class="card"><h3>Smart 2</h3></div>
+<div class="card"><h3>Smart Poptún</h3></div>
+<div class="card"><h3>Smart Sayaxché</h3></div>
+<div class="card"><h3>Smart Libertad</h3></div>
+<div class="card"><h3>Smart Melchor</h3></div>
+
+</div>
+
+</section>
+
+<!-- PRODUCTOS -->
+
+<section id="productos" class="about">
+
+<div class="titulo">
+
+<h2>Productos</h2>
+
+<p>
+Todo para estudiantes, oficinas y empresas.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Útiles escolares</h3>
+</div>
+
+<div class="card">
+<h3>Papelería</h3>
+</div>
+
+<div class="card">
+<h3>Oficina</h3>
+</div>
+
+<div class="card">
+<h3>Mobiliario escolar</h3>
+</div>
+
+</div>
+
+</section>
+
+<!-- MAYOREO -->
+
+<section id="mayoreo" class="mayoreo">
+
+<div class="titulo">
+
+<h2>Ventas al Mayoreo</h2>
+
+<p>
+Atención para colegios, empresas e instituciones.
+</p>
+
+</div>
+
+<a href="#contacto" class="btn btn-secondary">
+Solicitar cotización
+</a>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section id="contacto" class="contacto">
+
+<div class="titulo">
+
+<h2>Contacto</h2>
+
+<p>
+Estamos listos para atenderte.
+</p>
+
+</div>
+
+<p><strong>WhatsApp:</strong> +502 XXXXXXXX</p>
+
+<p><strong>Petén, Guatemala</strong></p>
+
+</section>
+
+<footer>
+
+© 2026 Cultura Inteligente
+
+</footer>
+
+<a href="https://wa.me/50200000000" class="whatsapp">
+WhatsApp
+</a>
+
 <script>
 
 function cerrarModal(){
@@ -54,534 +535,6 @@ document.getElementById(
 }
 
 </script>
-body{
-    background:#f4f6f9;
-    color:#1f2937;
-    line-height:1.6;
-}
-<div id="locationModal" class="modal">
-
-<div class="modal-content">
-
-<div class="modal-header">
-Cultura Inteligente
-</div>
-
-<h2>Selecciona tu municipio</h2>
-
-<label>Departamento</label>
-
-<select disabled>
-<option>Petén</option>
-</select>
-
-<label>Municipio</label>
-
-<select id="municipio">
-<option value="">Selecciona un municipio</option>
-<option>San Benito</option>
-<option>Flores</option>
-<option>Santa Elena</option>
-<option>Sayaxché</option>
-<option>Melchor de Mencos</option>
-<option>Poptún</option>
-<option>La Libertad</option>
-</select>
-
-<button onclick="cerrarModal()">
-Aceptar
-</button>
-
-</div>
-
-</div>
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-}
-
-.modal-content{
-    background:white;
-    width:90%;
-    max-width:550px;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
-}
-
-.modal-header{
-    background:#003366;
-    color:white;
-    padding:18px;
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-}
-
-.modal-content h2{
-    text-align:center;
-    margin:25px;
-    color:#003366;
-}
-
-.modal-content label{
-    display:block;
-    width:80%;
-    margin:10px auto 5px;
-    font-weight:bold;
-}
-
-.modal-content select{
-    width:80%;
-    padding:14px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
-    display:block;
-    margin:auto;
-}
-
-.modal-content button{
-    background:#e30613;
-    color:white;
-    border:none;
-    padding:15px 40px;
-    border-radius:10px;
-    margin:25px auto 35px;
-    display:block;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-header{
-    background:linear-gradient(rgba(0,35,80,.85),rgba(0,35,80,.85)),
-    url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
-    background-size:cover;
-    background-position:center;
-    color:white;
-    padding:90px 20px;
-    text-align:center;
-}
-
-header h1{
-    font-size:48px;
-    margin-bottom:15px;
-}
-
-header p{
-    max-width:800px;
-    margin:auto;
-    font-size:20px;
-}
-
-nav{
-    background:#003366;
-    padding:15px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
-}
-
-section{
-    padding:60px 10%;
-}
-
-.titulo{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.titulo h2{
-    color:#003366;
-    font-size:32px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:14px;
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
-}
-
-.card h3{
-    color:#0057b8;
-    margin-bottom:10px;
-}
-
-.btn{
-    display:inline-block;
-    padding:14px 24px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:8px;
-}
-
-.btn-primary{
-    background:#e30613;
-    color:white;
-}
-
-.btn-secondary{
-    background:white;
-    color:#003366;
-}
-
-.hero-buttons{
-    margin-top:30px;
-}
-
-.about{
-    background:white;
-}
-
-.mayoreo{
-    background:#003366;
-    color:white;
-    text-align:center;
-}
-
-.contacto{
-    background:white;
-    text-align:center;
-}
-
-footer{
-    background:#001f3f;
-    color:white;
-    text-align:center;
-    padding:25px;
-}
-
-.whatsapp{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    background:#25d366;
-    color:white;
-    padding:15px 20px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:bold;
-    z-index:999;
-}
-
-@media(max-width:768px){
-
-header h1{
-    font-size:34px;
-}
-
-nav a{
-    display:block;
-    margin:10px 0;
-}
-
-section{
-    padding:45px 6%;
-}
-
-}
-
-</style>
-
-    header {
-      background: linear-gradient(rgba(0, 35, 80, 0.85), rgba(0, 35, 80, 0.85)),
-        url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 90px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
-
-    header p {
-      font-size: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    nav {
-      background: #003366;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 60px 10%;
-    }
-
-    .titulo {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .titulo h2 {
-      color: #003366;
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
-    .card h3 {
-      color: #0057b8;
-      margin-bottom: 10px;
-    }
-
-    .hero-buttons {
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 8px;
-    }
-
-    .btn-primary {
-      background: #e30613;
-      color: white;
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #003366;
-    }
-
-    .about {
-      background: white;
-    }
-
-    .mayoreo {
-      background: #003366;
-      color: white;
-      text-align: center;
-    }
-
-    .mayoreo h2 {
-      color: white;
-    }
-
-    .contacto {
-      background: white;
-      text-align: center;
-    }
-
-    footer {
-      background: #001f3f;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: #25d366;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-      z-index: 200;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 34px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      section {
-        padding: 45px 6%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#sucursales">Sucursales</a>
-    <a href="#productos">Productos</a>
-    <a href="#mayoreo">Mayoreo</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <header id="inicio">
-    <h1>Cultura Inteligente</h1>
-    <p>Librerías y papelerías en Petén, ofreciendo útiles escolares, artículos de oficina, servicios y soluciones para estudiantes, empresas e instituciones.</p>
-
-    <div class="hero-buttons">
-      <a href="#productos" class="btn btn-primary">Ver productos</a>
-      <a href="#contacto" class="btn btn-secondary">Solicitar cotización</a>
-    </div>
-  </header>
-
-  <section id="nosotros" class="about">
-    <div class="titulo">
-      <h2>¿Quiénes somos?</h2>
-      <p>Una empresa petenera enfocada en brindar productos escolares, de oficina y soluciones comerciales con atención cercana y confiable.</p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Misión</h3>
-        <p>Proveer productos de calidad para estudiantes, familias, empresas e instituciones, con servicio rápido, precios competitivos y atención personalizada.</p>
-      </div>
-
-      <div class="card">
-        <h3>Visión</h3>
-        <p>Ser la red de librerías y papelerías líder en Petén, reconocida por su cobertura, innovación, variedad y servicio profesional.</p>
-      </div>
-
-      <div class="card">
-        <h3>Valores</h3>
-        <p>Responsabilidad, confianza, servicio, orden, compromiso y mejora continua en cada una de nuestras sucursales.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="sucursales">
-    <div class="titulo">
-      <h2>Nuestras sucursales</h2>
-      <p>Contamos con presencia en puntos estratégicos de Petén.</p>
-    </div>
-
-    <div class="grid">
-      <div class="card"><h3>Cultura 2</h3><p>Bodega principal y centro de distribución.</p></div>
-      <div class="card"><h3>Cultura 3</h3><p>Venta de útiles escolares y papelería.</p></div>
-      <div class="card"><h3>Cultura 4</h3><p>Atención al cliente y productos escolares.</p></div>
-      <div class="card"><h3>Cultura 5</h3><p>Productos de oficina y servicio local.</p></div>
-      <div class="card"><h3>Smart 1</h3><p>School & Office Supplies.</p></div>
-      <div class="card"><h3>Smart 2</h3><p>Artículos escolares, oficina y servicios.</p></div>
-      <div class="card"><h3>Smart Poptún</h3><p>Atención para clientes del área sur de Petén.</p></div>
-      <div class="card"><h3>Smart Sayaxché</h3><p>Sucursal para estudiantes, familias e instituciones.</p></div>
-      <div class="card"><h3>Smart Libertad</h3><p>Productos escolares y de oficina.</p></div>
-      <div class="card"><h3>Smart Melchor</h3><p>Atención en la zona fronteriza de Petén.</p></div>
-    </div>
-  </section>
-
-  <section id="productos" class="about">
-    <div class="titulo">
-      <h2>Productos principales</h2>
-      <p>Ofrecemos variedad para temporada escolar, oficinas, colegios, empresas e instituciones.</p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Útiles escolares</h3>
-        <p>Cuadernos, lápices, lapiceros, crayones, marcadores, reglas, tijeras, goma y mochilas.</p>
-      </div>
-
-      <div class="card">
-        <h3>Papelería</h3>
-        <p>Hojas, folders, sobres, cartulinas, papel construcción, papel bond y materiales para trabajos.</p>
-      </div>
-
-      <div class="card">
-        <h3>Oficina</h3>
-        <p>Archivadores, engrapadoras, clips, calculadoras, tinta, rollos térmicos y accesorios.</p>
-      </div>
-
-      <div class="card">
-        <h3>Mobiliario escolar</h3>
-        <p>Escritorios, sillas, pizarras y soluciones para centros educativos.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="mayoreo" class="mayoreo">
-    <div class="titulo">
-      <h2>Ventas al mayoreo</h2>
-      <p>Atendemos colegios, municipalidades, empresas, instituciones y clientes que buscan compras por volumen.</p>
-    </div>
-
-    <a href="#contacto" class="btn btn-secondary">Solicitar cotización institucional</a>
-  </section>
-
-  <section id="contacto" class="contacto">
-    <div class="titulo">
-      <h2>Contacto</h2>
-      <p>Comunícate con nosotros para cotizaciones, productos, disponibilidad o atención institucional.</p>
-    </div>
-
-    <p><strong>WhatsApp:</strong> +502 0000-0000</p>
-    <p><strong>Ubicación:</strong> Petén, Guatemala</p>
-    <p><strong>Facebook:</strong> Cultura Inteligente / Smart School & Office Supplies</p>
-
-    <br>
-
-    <a href="https://wa.me/50200000000" class="btn btn-primary" target="_blank">Escribir por WhatsApp</a>
-  </section>
-
-  <footer>
-    <p>© 2026 Cultura Inteligente | Librerías y Papelerías en Petén</p>
-  </footer>
-
-  <a href="https://wa.me/50200000000" class="whatsapp" target="_blank">WhatsApp</a>
 
 </body>
 </html>
