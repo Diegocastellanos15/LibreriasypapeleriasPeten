@@ -602,7 +602,7 @@ Cultura Inteligente
 
 <a href="#inicio">Inicio</a>
 <a href="#nosotros">Nosotros</a>
-<a href=".map-section">Sucursales</a>
+<a href="#sucursales">Sucursales</a>
 <a href="#productos">Productos</a>
 <a href="#mayoreo">Mayoreo</a>
 <a href="#contacto">Contacto</a>
@@ -1061,6 +1061,13 @@ setTimeout(() => {
 resultado.classList.add("visible");
 }, 50);
 
+function toggleMenu(){
+
+document
+.getElementById("navLinks")
+.classList.toggle("active");
+
+}
  const elementosAnimados =
 document.querySelectorAll(
 "section, .card, .stat-card, .trust-card, .coverage-box"
@@ -1088,13 +1095,6 @@ threshold:.15
 elementosAnimados.forEach(elemento => {
 observador.observe(elemento);
 });
-function toggleMenu(){
-
-document
-.getElementById("navLinks")
-.classList.toggle("active");
-
-}
 </script>
 
 </body>
