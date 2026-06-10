@@ -634,10 +634,7 @@ para estudiantes, familias, empresas e instituciones.
 </div>
 
 </section>
-<section class="location-section">
-
-<div class="titulo">
-
+ 
 <section class="map-section">
 
 <div class="titulo">
@@ -840,40 +837,6 @@ horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
 telefono:"+502 XXXXXXXX"
 }
 ];
-
-function crearCardSucursal(sucursal, principal){
-
-return `
-<div class="card">
-${principal ? '<span class="badge">Sucursal en tu municipio</span>' : ''}
-<h3>📍 ${sucursal.nombre}</h3>
-<p><strong>Municipio:</strong> ${sucursal.municipio}</p>
-<p><strong>Ubicación:</strong> ${sucursal.ubicacion}</p>
-<p><strong>Horario:</strong> ${sucursal.horario}</p>
-<p><strong>Teléfono:</strong> ${sucursal.telefono}</p>
-</div>
-`;
-
-}
-
-function mostrarSucursales(municipio){
-
-const seleccionadas =
-sucursales.filter(s => s.municipio === municipio);
-
-const otras =
-sucursales.filter(s => s.municipio !== municipio);
-
-document.getElementById("textoMunicipio").innerText =
-"Mostrando sucursales disponibles en " + municipio + ".";
-
-document.getElementById("sucursalesSeleccionadas").innerHTML =
-seleccionadas.map(s => crearCardSucursal(s,true)).join("");
-
-document.getElementById("otrasSucursales").innerHTML =
-otras.map(s => crearCardSucursal(s,false)).join("");
-
-}
 
 function cerrarModal(){
 
