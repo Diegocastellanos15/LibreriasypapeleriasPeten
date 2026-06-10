@@ -507,7 +507,52 @@ margin-top:30px;
 padding-top:18px;
 text-align:center;
 }
+.brands-section{
+background:white;
+padding:60px 0;
+overflow:hidden;
+}
 
+.brands-slider{
+width:100%;
+overflow:hidden;
+margin-top:30px;
+}
+
+.brands-track{
+display:flex;
+gap:20px;
+width:max-content;
+animation:scrollBrands 30s linear infinite;
+}
+
+.brand-card{
+min-width:180px;
+height:100px;
+background:white;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+font-weight:bold;
+color:#003366;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+border:1px solid #e5e7eb;
+}
+
+.brand-card:hover{
+transform:translateY(-4px);
+}
+
+@keyframes scrollBrands{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-50%);
+}
+}
 .whatsapp{
 position:fixed;
 right:20px;
@@ -685,7 +730,11 @@ gap:25px;
 .footer-column{
 text-align:center;
 }
-
+.brand-card{
+min-width:130px;
+height:80px;
+font-size:18px;
+}
 }
 </style>
 </head>
@@ -768,6 +817,44 @@ mobiliario escolar y soluciones institucionales en nuestras sucursales.
 </div>
 
 </header>
+<section class="brands-section">
+
+<div class="titulo">
+<h2>Marcas de confianza</h2>
+<p>Trabajamos con marcas reconocidas por miles de estudiantes, oficinas y empresas en Guatemala.</p>
+</div>
+
+<div class="brands-slider">
+
+<div class="brands-track">
+
+<div class="brand-card">BIC</div>
+<div class="brand-card">TUCÁN</div>
+<div class="brand-card">FÁTIMA</div>
+<div class="brand-card">FAST</div>
+<div class="brand-card">KREA</div>
+<div class="brand-card">AZOR</div>
+<div class="brand-card">BOLIK</div>
+<div class="brand-card">BEAUTONE</div>
+<div class="brand-card">AMPA</div>
+<div class="brand-card">ARTESCO</div>
+
+<div class="brand-card">BIC</div>
+<div class="brand-card">TUCÁN</div>
+<div class="brand-card">FÁTIMA</div>
+<div class="brand-card">FAST</div>
+<div class="brand-card">KREA</div>
+<div class="brand-card">AZOR</div>
+<div class="brand-card">BOLIK</div>
+<div class="brand-card">BEAUTONE</div>
+<div class="brand-card">AMPA</div>
+<div class="brand-card">ARTESCO</div>
+
+</div>
+
+</div>
+
+</section>
 <section class="stats-section">
 
 <div class="stats-grid">
