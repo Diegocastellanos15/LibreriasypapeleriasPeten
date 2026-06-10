@@ -8,7 +8,6 @@
 <title>Cultura Inteligente | Librerías y Papelerías en Petén</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -21,8 +20,6 @@ background:#f4f6f9;
 color:#1f2937;
 line-height:1.6;
 }
-
-/* MODAL */
 
 .modal{
 position:fixed;
@@ -87,8 +84,6 @@ cursor:pointer;
 font-weight:bold;
 }
 
-/* MENU */
-
 nav{
 background:#003366;
 padding:15px;
@@ -104,8 +99,6 @@ text-decoration:none;
 margin:0 15px;
 font-weight:bold;
 }
-
-/* HERO */
 
 header{
 background:
@@ -152,8 +145,6 @@ background:white;
 color:#003366;
 }
 
-/* SECCIONES */
-
 section{
 padding:60px 10%;
 }
@@ -190,7 +181,7 @@ color:white;
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
 
@@ -211,7 +202,33 @@ color:#0057b8;
 margin-bottom:10px;
 }
 
-/* FOOTER */
+.card p{
+margin-bottom:8px;
+}
+
+.badge{
+display:inline-block;
+background:#e30613;
+color:white;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+margin-bottom:12px;
+}
+
+.otras{
+margin-top:50px;
+padding-top:35px;
+border-top:2px solid #dbe3ef;
+}
+
+.otras h3{
+color:#003366;
+text-align:center;
+font-size:26px;
+margin-bottom:25px;
+}
 
 footer{
 background:#001f3f;
@@ -219,8 +236,6 @@ color:white;
 text-align:center;
 padding:25px;
 }
-
-/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -235,8 +250,6 @@ font-weight:bold;
 box-shadow:0 6px 18px rgba(0,0,0,.25);
 z-index:999;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
 
@@ -254,17 +267,12 @@ padding:45px 6%;
 }
 
 }
-
 </style>
-
 </head>
 
 <body>
 
-<!-- MODAL -->
-
 <div id="locationModal" class="modal">
-
 <div class="modal-content">
 
 <div class="modal-header">
@@ -274,17 +282,13 @@ Cultura Inteligente
 <h2>Selecciona tu municipio</h2>
 
 <label>Departamento</label>
-
 <select disabled>
 <option>Petén</option>
 </select>
 
 <label>Municipio</label>
-
 <select id="municipio">
-
 <option value="">Selecciona un municipio</option>
-
 <option>San Benito</option>
 <option>Flores</option>
 <option>Santa Elena</option>
@@ -292,31 +296,21 @@ Cultura Inteligente
 <option>Melchor de Mencos</option>
 <option>Poptún</option>
 <option>La Libertad</option>
-
 </select>
 
-<button onclick="cerrarModal()">
-Aceptar
-</button>
+<button onclick="cerrarModal()">Aceptar</button>
 
 </div>
-
 </div>
-
-<!-- MENU -->
 
 <nav>
-
 <a href="#inicio">Inicio</a>
 <a href="#nosotros">Nosotros</a>
 <a href="#sucursales">Sucursales</a>
 <a href="#productos">Productos</a>
 <a href="#mayoreo">Mayoreo</a>
 <a href="#contacto">Contacto</a>
-
 </nav>
-
-<!-- HERO -->
 
 <header id="inicio">
 
@@ -330,26 +324,16 @@ estudiantes, empresas e instituciones.
 </p>
 
 <div class="hero-buttons">
-
-<a href="#productos" class="btn btn-primary">
-Ver productos
-</a>
-
-<a href="#contacto" class="btn btn-secondary">
-Solicitar cotización
-</a>
-
+<a href="#productos" class="btn btn-primary">Ver productos</a>
+<a href="#contacto" class="btn btn-secondary">Solicitar cotización</a>
 </div>
 
 </header>
-
-<!-- NOSOTROS -->
 
 <section id="nosotros" class="about">
 
 <div class="titulo">
 <h2>¿Quiénes somos?</h2>
-
 <p>
 Empresa petenera especializada en útiles escolares,
 papelería, oficina y soluciones institucionales.
@@ -357,7 +341,6 @@ papelería, oficina y soluciones institucionales.
 </div>
 
 <div class="grid">
-
 <div class="card">
 <h3>Misión</h3>
 <p>Brindar productos de calidad y excelente servicio.</p>
@@ -372,122 +355,69 @@ papelería, oficina y soluciones institucionales.
 <h3>Valores</h3>
 <p>Responsabilidad, servicio, confianza e innovación.</p>
 </div>
-
 </div>
 
 </section>
-
-<!-- SUCURSALES -->
 
 <section id="sucursales">
 
 <div class="titulo">
-
 <h2>Nuestras sucursales</h2>
-
-<p>
-Cobertura estratégica en Petén.
+<p id="textoMunicipio">
+Selecciona tu municipio para ver las sucursales más cercanas.
 </p>
-
 </div>
 
-<div class="grid">
+<div id="sucursalesSeleccionadas" class="grid"></div>
 
-<div class="card"><h3>Cultura 2</h3></div>
-<div class="card"><h3>Cultura 3</h3></div>
-<div class="card"><h3>Cultura 4</h3></div>
-<div class="card"><h3>Cultura 5</h3></div>
-<div class="card"><h3>Smart 1</h3></div>
-<div class="card"><h3>Smart 2</h3></div>
-<div class="card"><h3>Smart Poptún</h3></div>
-<div class="card"><h3>Smart Sayaxché</h3></div>
-<div class="card"><h3>Smart Libertad</h3></div>
-<div class="card"><h3>Smart Melchor</h3></div>
-
+<div class="otras">
+<h3>Otras ubicaciones disponibles</h3>
+<div id="otrasSucursales" class="grid"></div>
 </div>
 
 </section>
-
-<!-- PRODUCTOS -->
 
 <section id="productos" class="about">
 
 <div class="titulo">
-
 <h2>Productos</h2>
-
-<p>
-Todo para estudiantes, oficinas y empresas.
-</p>
-
+<p>Todo para estudiantes, oficinas y empresas.</p>
 </div>
 
 <div class="grid">
-
-<div class="card">
-<h3>Útiles escolares</h3>
-</div>
-
-<div class="card">
-<h3>Papelería</h3>
-</div>
-
-<div class="card">
-<h3>Oficina</h3>
-</div>
-
-<div class="card">
-<h3>Mobiliario escolar</h3>
-</div>
-
+<div class="card"><h3>Útiles escolares</h3></div>
+<div class="card"><h3>Papelería</h3></div>
+<div class="card"><h3>Oficina</h3></div>
+<div class="card"><h3>Mobiliario escolar</h3></div>
 </div>
 
 </section>
-
-<!-- MAYOREO -->
 
 <section id="mayoreo" class="mayoreo">
 
 <div class="titulo">
-
 <h2>Ventas al Mayoreo</h2>
-
-<p>
-Atención para colegios, empresas e instituciones.
-</p>
-
+<p>Atención para colegios, empresas e instituciones.</p>
 </div>
 
-<a href="#contacto" class="btn btn-secondary">
-Solicitar cotización
-</a>
+<a href="#contacto" class="btn btn-secondary">Solicitar cotización</a>
 
 </section>
-
-<!-- CONTACTO -->
 
 <section id="contacto" class="contacto">
 
 <div class="titulo">
-
 <h2>Contacto</h2>
-
-<p>
-Estamos listos para atenderte.
-</p>
-
+<p>Estamos listos para atenderte.</p>
 </div>
 
 <p><strong>WhatsApp:</strong> +502 XXXXXXXX</p>
-
 <p><strong>Petén, Guatemala</strong></p>
 
 </section>
 
 <footer>
-
 © 2026 Cultura Inteligente
-
 </footer>
 
 <a href="https://wa.me/50200000000" class="whatsapp">
@@ -495,6 +425,113 @@ WhatsApp
 </a>
 
 <script>
+
+const sucursales = [
+{
+nombre:"Cultura 2",
+municipio:"Santa Elena",
+ubicacion:"Santa Elena, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Cultura 3",
+municipio:"San Benito",
+ubicacion:"San Benito, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Cultura 4",
+municipio:"Flores",
+ubicacion:"Flores, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Cultura 5",
+municipio:"Santa Elena",
+ubicacion:"Santa Elena, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Smart 1",
+municipio:"San Benito",
+ubicacion:"San Benito, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Smart 2",
+municipio:"Flores",
+ubicacion:"Flores, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Smart Sayaxché",
+municipio:"Sayaxché",
+ubicacion:"Sayaxché, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Smart Melchor",
+municipio:"Melchor de Mencos",
+ubicacion:"Melchor de Mencos, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Smart Poptún",
+municipio:"Poptún",
+ubicacion:"Poptún, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+},
+{
+nombre:"Smart Libertad",
+municipio:"La Libertad",
+ubicacion:"La Libertad, Petén",
+horario:"Lunes a domingo, 8:00 a.m. - 6:00 p.m.",
+telefono:"+502 XXXXXXXX"
+}
+];
+
+function crearCardSucursal(sucursal, principal){
+
+return `
+<div class="card">
+${principal ? '<span class="badge">Sucursal en tu municipio</span>' : ''}
+<h3>${sucursal.nombre}</h3>
+<p><strong>Municipio:</strong> ${sucursal.municipio}</p>
+<p><strong>Ubicación:</strong> ${sucursal.ubicacion}</p>
+<p><strong>Horario:</strong> ${sucursal.horario}</p>
+<p><strong>Teléfono:</strong> ${sucursal.telefono}</p>
+</div>
+`;
+
+}
+
+function mostrarSucursales(municipio){
+
+const seleccionadas =
+sucursales.filter(s => s.municipio === municipio);
+
+const otras =
+sucursales.filter(s => s.municipio !== municipio);
+
+document.getElementById("textoMunicipio").innerText =
+"Mostrando sucursales disponibles en " + municipio + ".";
+
+document.getElementById("sucursalesSeleccionadas").innerHTML =
+seleccionadas.map(s => crearCardSucursal(s,true)).join("");
+
+document.getElementById("otrasSucursales").innerHTML =
+otras.map(s => crearCardSucursal(s,false)).join("");
+
+}
 
 function cerrarModal(){
 
@@ -506,31 +543,23 @@ alert("Selecciona un municipio");
 return;
 }
 
-localStorage.setItem(
-"municipioSeleccionado",
-municipio
-);
+document.getElementById("locationModal").style.display="none";
 
-document.getElementById(
-"locationModal"
-).style.display="none";
+mostrarSucursales(municipio);
+
+document.getElementById("sucursales").scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
 window.onload=function(){
 
-const municipioGuardado=
-localStorage.getItem(
-"municipioSeleccionado"
-);
+document.getElementById("locationModal").style.display="flex";
 
-if(municipioGuardado){
-
-document.getElementById(
-"locationModal"
-).style.display="none";
-
-}
+document.getElementById("sucursalesSeleccionadas").innerHTML = "";
+document.getElementById("otrasSucursales").innerHTML =
+sucursales.map(s => crearCardSucursal(s,false)).join("");
 
 }
 
