@@ -230,14 +230,35 @@ gap:20px;
 }
 
 .stat-card{
-background:#f8fafc;
-border-radius:16px;
-padding:25px;
+background:white;
+border-radius:22px;
+padding:32px 25px;
 text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,.06);
-border-bottom:4px solid #ffc107;
+box-shadow:0 14px 34px rgba(0,0,0,.08);
+border-bottom:5px solid #ffc107;
+transition:.3s;
+position:relative;
+overflow:hidden;
 }
 
+.stat-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 45px rgba(0,0,0,.13);
+}
+
+.stat-icon{
+width:46px;
+height:46px;
+margin:0 auto 12px;
+border-radius:14px;
+background:#003366;
+color:#ffc107;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:bold;
+}
 .stat-card h2{
 color:#003366;
 font-size:34px;
@@ -842,23 +863,27 @@ mobiliario escolar y soluciones institucionales en nuestras sucursales.
 <div class="stats-grid">
 
 <div class="stat-card">
-<h2>12</h2>
+<div class="stat-icon">▣</div>
+<h2><span class="counter" data-target="12">0</span>+</h2>
 <p>Sucursales</p>
 </div>
 
 <div class="stat-card">
-<h2>7</h2>
+<div class="stat-icon">⌖</div>
+<h2><span class="counter" data-target="7">0</span></h2>
 <p>Municipios</p>
 </div>
 
 <div class="stat-card">
-<h2>+15,000</h2>
+<div class="stat-icon">▤</div>
+<h2><span class="counter" data-target="15000">0</span>+</h2>
 <p>Productos</p>
 </div>
 
 <div class="stat-card">
-<h2>Lun - Dom</h2>
-<p>Atención disponible</p>
+<div class="stat-icon">◷</div>
+<h2><span class="counter" data-target="50">0</span>+</h2>
+<p>Años de experiencia</p>
 </div>
 
 </div>
@@ -1321,7 +1346,46 @@ document.querySelectorAll(
 elementosAnimados.forEach(elemento => {
 elemento.classList.add("fade-in");
 });
+const counters = document.querySelectorAll(".counter");
 
+const counterObserver = new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+const counter = entry.target;
+const target = Number(counter.getAttribute("data-target"));
+const duration = 1200;
+const startTime = performance.now();
+
+function updateCounter(currentTime){
+
+const progress = Math.min((currentTime - startTime) / duration, 1);
+const value = Math.floor(progress * target);
+
+counter.textContent = value.toLocaleString("es-GT");
+
+if(progress < 1){
+requestAnimationFrame(updateCounter);
+}else{
+counter.textContent = target.toLocaleString("es-GT");
+}
+
+}
+
+requestAnimationFrame(updateCounter);
+counterObserver.unobserve(counter);
+
+}
+
+});
+
+},{threshold:.6});
+
+counters.forEach(counter => {
+counterObserver.observe(counter);
+});
 const observador =
 new IntersectionObserver((entradas) => {
 
