@@ -437,7 +437,52 @@ color:#003366;
 .about{
 background:white;
 }
+.history-section{
+background:white;
+padding:80px 10%;
+}
 
+.history-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:55px;
+align-items:center;
+}
+
+.history-image img{
+width:100%;
+border-radius:26px;
+box-shadow:0 18px 45px rgba(0,0,0,.18);
+display:block;
+}
+
+.history-content{
+max-width:620px;
+}
+
+.history-badge{
+display:inline-block;
+background:#ffc107;
+color:#003366;
+padding:8px 16px;
+border-radius:30px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.history-content h2{
+color:#003366;
+font-size:38px;
+line-height:1.15;
+margin-bottom:22px;
+}
+
+.history-content p{
+font-size:18px;
+color:#4b5563;
+margin-bottom:16px;
+line-height:1.8;
+}
 .contacto{
 background:white;
 text-align:center;
@@ -726,7 +771,27 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 }
- 
+.history-section{
+padding:50px 5%;
+}
+
+.history-container{
+grid-template-columns:1fr;
+gap:28px;
+}
+
+.history-content h2{
+font-size:28px;
+}
+
+.history-content p{
+font-size:16px;
+line-height:1.7;
+}
+
+.history-image img{
+border-radius:20px;
+}
 .map-section{
 padding:45px 4%;
 }
@@ -881,7 +946,6 @@ Cultura Inteligente
 <a href="#nosotros">Nosotros</a>
 <a href="#sucursales">Sucursales</a>
 <a href="#productos">Productos</a>
-<a href="#mayoreo">Mayoreo</a>
 <a href="#footer">Contacto</a>
 
 </div>
@@ -1033,7 +1097,6 @@ Aquí aparecerán las sucursales disponibles según la ubicación seleccionada.
 
 <div class="brand-card"><img src="assets/logos/bic.png" alt="BIC"></div>
 <div class="brand-card"><img src="assets/logos/tucan.png" alt="Tucán"></div>
-<div class="brand-card"><img src="assets/logos/fatima.png" alt="Fátima"></div>
 <div class="brand-card"><img src="assets/logos/fast.png" alt="FAST"></div>
 <div class="brand-card"><img src="assets/logos/bolik.jpg" alt="Bolik"></div>
 <div class="brand-card"><img src="assets/logos/beautone.webp" alt="Beautone"></div>
@@ -1043,7 +1106,6 @@ Aquí aparecerán las sucursales disponibles según la ubicación seleccionada.
 
 <div class="brand-card"><img src="assets/logos/bic.png" alt="BIC"></div>
 <div class="brand-card"><img src="assets/logos/tucan.png" alt="Tucán"></div>
-<div class="brand-card"><img src="assets/logos/fatima.png" alt="Fátima"></div>
 <div class="brand-card"><img src="assets/logos/fast.png" alt="FAST"></div>
 <div class="brand-card"><img src="assets/logos/bolik.jpg" alt="Bolik"></div>
 <div class="brand-card"><img src="assets/logos/beautone.webp" alt="Beautone"></div>
@@ -1056,31 +1118,37 @@ Aquí aparecerán las sucursales disponibles según la ubicación seleccionada.
 </div>
 
 </section>
-<section id="nosotros" class="about">
-<div class="titulo">
-<h2>¿Quiénes somos?</h2>
+<section id="nosotros" class="history-section">
+
+<div class="history-container">
+
+<div class="history-image">
+<img src="assets/LibreriaCultura1.webp" alt="Primera librería Cultura en Flores, Petén">
+</div>
+
+<div class="history-content">
+
+<span class="history-badge">Nuestra historia</span>
+
+<h2>Más de 50 años creciendo junto a Petén</h2>
+
 <p>
-Empresa petenera especializada en útiles escolares,
-papelería, oficina y soluciones institucionales.
+Hace más de 50 años, Anita Aída Pinelo de Castellanos y José Eduviges Castellanos iniciaron un sueño empresarial en la Isla de Flores, Petén.
 </p>
+
+<p>
+Lo que comenzó como una librería familiar se convirtió con el tiempo en una red de sucursales que hoy atiende estudiantes, familias, empresas e instituciones en todo el departamento.
+</p>
+
+<p>
+A lo largo de las décadas hemos mantenido los mismos principios que dieron origen a nuestra empresa: servicio cercano, confianza, responsabilidad y compromiso con la educación y el desarrollo de Petén.
+</p>
+
 </div>
 
-<div class="grid">
-<div class="card">
-<h3>Misión</h3>
-<p>Brindar productos de calidad y excelente servicio.</p>
 </div>
 
-<div class="card">
-<h3>Visión</h3>
-<p>Ser la red de librerías líder en Petén.</p>
-</div>
-
-<div class="card">
-<h3>Valores</h3>
-<p>Responsabilidad, servicio, confianza e innovación.</p>
-</div>
-</div>
+</section>
 
 </section>
 
@@ -1097,17 +1165,6 @@ papelería, oficina y soluciones institucionales.
 <div class="card"><h3>Oficina</h3></div>
 <div class="card"><h3>Mobiliario escolar</h3></div>
 </div>
-
-</section>
-
-<section id="mayoreo" class="mayoreo">
-
-<div class="titulo">
-<h2>Ventas al Mayoreo</h2>
-<p>Atención para colegios, empresas e instituciones.</p>
-</div>
-
-<a href="#footer" class="btn btn-secondary">Solicitar cotización</a>
 
 </section>
 
@@ -1129,7 +1186,6 @@ papelería, oficina y soluciones institucionales.
 <a href="#inicio">Inicio</a>
 <a href="#nosotros">Nosotros</a>
 <a href="#productos">Productos</a>
-<a href="#mayoreo">Mayoreo</a>
 <a href="#footer">Contacto</a>
 </div>
 
